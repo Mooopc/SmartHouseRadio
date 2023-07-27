@@ -6,6 +6,16 @@ public class Radio {
     private int minStation = 0, maxStation = 9;
     private int minVolume = 0, maxVolume = 100;
 
+    public Radio() {
+
+    }
+    public Radio(int minStation, int maxStation, int minVolume,int maxVolume) {
+        this.minStation = minStation;
+        this.maxStation = maxStation;
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
+    }
+
 
     public void next() {
         if (currentStation < maxStation) {

@@ -5,6 +5,16 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     @Test
+    public void sholdSetCustomLimitStation() {
+        Radio radio = new Radio(0, 9, 0, 100);
+
+        radio.setCurrentStation(9);
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
     public void shouldSetLowerLimitStation() {
         Radio radio = new Radio();
 
