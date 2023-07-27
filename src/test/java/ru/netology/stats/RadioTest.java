@@ -74,7 +74,7 @@ public class RadioTest {
     public void shouldSetIncorrectStation() {
         Radio radio = new Radio();
 
-        radio.setCurrentStation(-5);
+        radio.setCurrentStation(-4);
 
         int expected = 0;
         int actual = radio.getCurrentStation();
