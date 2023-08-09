@@ -5,15 +5,22 @@ public class Radio {
     private int currentVolume;
     private int minStation = 0, maxStation = 9;
     private int minVolume = 0, maxVolume = 100;
+    private int numberOfRadioStations = 10;
 
     public Radio() {
 
     }
-    public Radio(int minStation, int maxStation, int minVolume,int maxVolume) {
+
+    public Radio(int minStation, int maxStation, int minVolume, int maxVolume, int numberOfRadioStations) {
         this.minStation = minStation;
         this.maxStation = maxStation;
         this.minVolume = minVolume;
         this.maxVolume = maxVolume;
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
+
+    public Radio(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
     }
 
 
@@ -31,6 +38,10 @@ public class Radio {
         } else {
             currentStation = maxStation;
         }
+    }
+
+    public int getCurrentNumberOfStations() {
+        return numberOfRadioStations;
     }
 
     public int getCurrentStation() {
@@ -60,10 +71,12 @@ public class Radio {
         }
         this.currentVolume = currentVolume;
     }
+
     public void decreaseVolume() {
-        setCurrentVolume(getCurrentVolume()-1);
+        setCurrentVolume(getCurrentVolume() - 1);
     }
+
     public void increaseVolume() {
-        setCurrentVolume(getCurrentVolume()+1);
+        setCurrentVolume(getCurrentVolume() + 1);
     }
 }
