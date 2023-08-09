@@ -519,7 +519,7 @@ public class RadioTest {
 
     @Test
     public void TryToDecreaseMinCustomVolume() {
-        Radio radio = new Radio(0, 100, 0, 100, 101);
+        Radio radio = new Radio(0, 101, 0, 100, 101);
 
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
