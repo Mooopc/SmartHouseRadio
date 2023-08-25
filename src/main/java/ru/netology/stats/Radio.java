@@ -12,14 +12,6 @@ public class Radio {
 
     }
 
-//    public Radio(int minStation, int maxStation, int minVolume, int maxVolume, int numberOfRadioStations) {
-//        this.minStation = minStation;
-//        this.maxStation = maxStation;
-//        this.minVolume = minVolume;
-//        this.maxVolume = maxVolume;
-//        this.numberOfRadioStations = numberOfRadioStations;
-//    }
-
     public Radio(int numberOfRadioStations) {
         this.numberOfRadioStations = numberOfRadioStations;
     }
