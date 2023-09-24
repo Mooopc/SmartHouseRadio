@@ -1,47 +1,41 @@
 package ru.netology.stats;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
-    private int minStation = 0, maxStation = 9;
+    private int currentStation = 0;
+    private int currentVolume = 100;
+
+    private int radioStationsCount = 0;
+    private int minStationIndex = 0, maxStationIndex = 0;
     private int minVolume = 0, maxVolume = 100;
-    private int numberOfRadioStations = 10;
 
     public Radio() {
-
+        this(10);
     }
 
-    public Radio(int minStation, int maxStation, int minVolume, int maxVolume, int numberOfRadioStations) {
-        this.minStation = minStation;
-        this.maxStation = maxStation;
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
-        this.numberOfRadioStations = numberOfRadioStations;
-    }
-
-    public Radio(int numberOfRadioStations) {
-        this.numberOfRadioStations = numberOfRadioStations;
+    public Radio(int radioStationsCount) {
+        this.radioStationsCount = radioStationsCount;
+        maxStationIndex = radioStationsCount - 1;
     }
 
 
     public void next() {
-        if (currentStation < maxStation) {
+        if (currentStation < maxStationIndex) {
             currentStation++;
         } else {
-            currentStation = minStation;
+            currentStation = minStationIndex;
         }
     }
 
     public void prev() {
-        if (currentStation > minStation) {
+        if (currentStation > minStationIndex) {
             currentStation--;
         } else {
-            currentStation = maxStation;
+            currentStation = maxStationIndex;
         }
     }
 
-    public int getCurrentNumberOfStations() {
-        return numberOfRadioStations;
+    public int getRadioStationsCount() {
+        return radioStationsCount;
     }
 
     public int getCurrentStation() {
@@ -49,10 +43,10 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation < minStation) {
+        if (currentStation < minStationIndex) {
             return;
         }
-        if (currentStation > maxStation) {
+        if (currentStation >= radioStationsCount) {
             return;
         }
         this.currentStation = currentStation;
