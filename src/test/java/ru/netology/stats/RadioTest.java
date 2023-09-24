@@ -8,21 +8,20 @@ public class RadioTest {
     public void shouldSetNumberOfStations() {
         Radio radio = new Radio(12);
 
-        Assertions.assertEquals(12, radio.getCurrentNumberOfStations());
+        Assertions.assertEquals(12, radio.getRadioStationsCount());
     }
 
     @Test
     public void checkDefaultNumberOfStations() {
         Radio radio = new Radio();
 
-        Assertions.assertEquals(10, radio.getCurrentNumberOfStations());
+        Assertions.assertEquals(10, radio.getRadioStationsCount());
     }
 
     @Test
-    public void sholdSetCustomLimitStation() {
+    public void shouldSetCustomLimitStation() {
         Radio radio = new Radio(20);
 
-        radio.setMaxStation(20);
         radio.setCurrentStation(15);
 
         int expected = 15;
@@ -34,7 +33,7 @@ public class RadioTest {
     public void shouldSetLowerLimitCustomStation() {
         Radio radio = new Radio(20);
 
-        radio.setMaxStation(20);
+
         radio.setCurrentStation(0);
 
         int expected = 0;
@@ -46,7 +45,6 @@ public class RadioTest {
     public void shouldSetLowerLimitStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(0);
 
         int expected = 0;
@@ -58,7 +56,6 @@ public class RadioTest {
     public void shouldSetBelowLowerLimitCustomStation() {
         Radio radio = new Radio(21);
 
-        radio.setMaxStation(21);
         radio.setCurrentStation(-1);
 
         int expected = 0;
@@ -70,7 +67,6 @@ public class RadioTest {
     public void shouldSetBelowLowerLimitStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(-1);
 
         int expected = 0;
@@ -82,7 +78,6 @@ public class RadioTest {
     public void shouldSetAboveLowerLimitCustomStation() {
         Radio radio = new Radio(21);
 
-        radio.setMaxStation(21);
         radio.setCurrentStation(1);
 
         int expected = 1;
@@ -93,8 +88,7 @@ public class RadioTest {
     @Test
     public void shouldSetAboveLowerLimitStation() {
         Radio radio = new Radio();
-
-        radio.setMaxStation(11);
+        ;
         radio.setCurrentStation(1);
 
         int expected = 1;
@@ -105,8 +99,6 @@ public class RadioTest {
     @Test
     public void shouldSetUpperLimitCustomStation() {
         Radio radio = new Radio(21);
-
-        radio.setMaxStation(21);
 
         radio.setCurrentStation(20);
 
@@ -119,8 +111,6 @@ public class RadioTest {
     public void shouldSetUpperLimitStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
-
         radio.setCurrentStation(9);
 
         int expected = 9;
@@ -132,7 +122,6 @@ public class RadioTest {
     public void TryToSetUpperLimitCustomStation() {
         Radio radio = new Radio(20);
 
-        radio.setMaxStation(20);
         radio.setCurrentStation(21);
 
         int expected = 0;
@@ -144,7 +133,6 @@ public class RadioTest {
     public void TryToSetAboveUpperLimitStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(11);
 
         int expected = 0;
@@ -155,8 +143,6 @@ public class RadioTest {
     @Test
     public void TryToSetBelowUpperLimitCustomStation() {
         Radio radio = new Radio(21);
-
-        radio.setMaxStation(21);
 
         radio.setCurrentStation(19);
 
@@ -169,7 +155,6 @@ public class RadioTest {
     public void TryToSetBelowUpperLimitStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(8);
 
         int expected = 8;
@@ -181,7 +166,6 @@ public class RadioTest {
     public void shouldSetIncorrectStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(-4);
 
         int expected = 0;
@@ -192,8 +176,6 @@ public class RadioTest {
     @Test
     public void shouldIncreaseCustomStation() {
         Radio radio = new Radio(21);
-
-        radio.setMaxStation(21);
 
         radio.setCurrentStation(11);
         radio.next();
@@ -207,7 +189,6 @@ public class RadioTest {
     public void shouldIncreaseStation() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(8);
         radio.next();
 
@@ -220,7 +201,6 @@ public class RadioTest {
     public void shouldIncreaseCustomStationFromZero() {
         Radio radio = new Radio(21);
 
-        radio.setMaxStation(21);
         radio.setCurrentStation(0);
         radio.next();
 
@@ -233,7 +213,6 @@ public class RadioTest {
     public void shouldIncreaseStationFromZero() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(0);
         radio.next();
 
@@ -246,7 +225,6 @@ public class RadioTest {
     public void shouldIncreaseCustomStationFromOne() {
         Radio radio = new Radio(21);
 
-        radio.setMaxStation(21);
         radio.setCurrentStation(1);
         radio.next();
 
@@ -259,7 +237,6 @@ public class RadioTest {
     public void shouldIncreaseStationFromOne() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(1);
         radio.next();
 
@@ -272,7 +249,6 @@ public class RadioTest {
     public void shouldIncreaseCustomStationFromMax() {
         Radio radio = new Radio(41);
 
-        radio.setMaxStation(41);
         radio.setCurrentStation(40);
         radio.next();
 
@@ -285,9 +261,7 @@ public class RadioTest {
     public void shouldIncreaseStationFromMax() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
-
-        radio.setCurrentStation(10);
+        radio.setCurrentStation(9);
         radio.next();
 
         int expected = 0;
@@ -298,8 +272,6 @@ public class RadioTest {
     @Test
     public void shouldIncreaseCustomStationFromBelowUpperLimit() {
         Radio radio = new Radio(12);
-
-        radio.setMaxStation(12);
 
         radio.setCurrentStation(10);
         radio.next();
@@ -313,12 +285,10 @@ public class RadioTest {
     public void shouldIncreaseStationFromBelowUpperLimit() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
-
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(8);
         radio.next();
 
-        int expected = 10;
+        int expected = 9;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -327,7 +297,6 @@ public class RadioTest {
     public void shouldDecreaseCustomStation() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentStation(14);
         radio.prev();
 
@@ -339,8 +308,6 @@ public class RadioTest {
     @Test
     public void shouldDecreaseStation() {
         Radio radio = new Radio();
-
-        radio.setMaxStation(11);
 
         radio.setCurrentStation(4);
         radio.prev();
@@ -354,8 +321,6 @@ public class RadioTest {
     public void shouldDecreaseCustomStationFromMin() {
         Radio radio = new Radio(50);
 
-        radio.setMaxStation(50);
-
         radio.setCurrentStation(0);
         radio.prev();
 
@@ -368,12 +333,10 @@ public class RadioTest {
     public void shouldDecreaseStationFromMin() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
-
         radio.setCurrentStation(0);
         radio.prev();
 
-        int expected = 10;
+        int expected = 9;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -382,7 +345,6 @@ public class RadioTest {
     public void shouldDecreaseStationFromAboveMin() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(16);
         radio.setCurrentStation(1);
         radio.prev();
 
@@ -395,7 +357,6 @@ public class RadioTest {
     public void shouldDecreaseCustomStationFromAboveMin() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentStation(1);
         radio.prev();
 
@@ -408,7 +369,6 @@ public class RadioTest {
     public void shouldDecreaseStationFromMax() {
         Radio radio = new Radio();
 
-        radio.setMaxStation(11);
         radio.setCurrentStation(10);
         radio.prev();
 
@@ -421,7 +381,6 @@ public class RadioTest {
     public void shouldDecreaseCustomStationFromMax() {
         Radio radio = new Radio(101);
 
-        radio.setMaxStation(101);
 
         radio.setCurrentStation(100);
         radio.prev();
@@ -438,7 +397,6 @@ public class RadioTest {
     public void shouldSetMinCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(0);
 
         int expected = 0;
@@ -450,7 +408,6 @@ public class RadioTest {
     public void TryToSetMaxCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(100);
 
         int expected = 100;
@@ -462,7 +419,6 @@ public class RadioTest {
     public void TryToSetBelowMaxLimitCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(99);
 
         int expected = 99;
@@ -474,7 +430,6 @@ public class RadioTest {
     public void TryToSetAboveMinLimitCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(1);
 
         int expected = 1;
@@ -486,10 +441,9 @@ public class RadioTest {
     public void TryToSetAboveMaxLimitCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(101);
 
-        int expected = 0;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -498,10 +452,9 @@ public class RadioTest {
     public void TryToSetBelowMinLimitCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(-1);
 
-        int expected = 0;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -510,7 +463,6 @@ public class RadioTest {
     public void shouldIncreaseCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(59);
         radio.increaseVolume();
 
@@ -523,7 +475,6 @@ public class RadioTest {
     public void shouldIncreaseToMaxCustomVolumeFromBelowMax() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(99);
         radio.increaseVolume();
 
@@ -536,7 +487,6 @@ public class RadioTest {
     public void TryToIncreaseMaxCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(100);
         radio.increaseVolume();
 
@@ -549,7 +499,6 @@ public class RadioTest {
     public void shouldDecreaseCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(51);
         radio.decreaseVolume();
 
@@ -562,7 +511,6 @@ public class RadioTest {
     public void shouldDecreaseFromMaxCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(100);
         radio.decreaseVolume();
 
@@ -575,7 +523,6 @@ public class RadioTest {
     public void TryToDecreaseMinCustomVolume() {
         Radio radio = new Radio(16);
 
-        radio.setMaxStation(16);
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
 

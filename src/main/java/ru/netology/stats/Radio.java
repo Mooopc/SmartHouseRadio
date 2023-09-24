@@ -1,45 +1,41 @@
 package ru.netology.stats;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
+    private int currentStation = 0;
+    private int currentVolume = 100;
 
-    private int numberOfRadioStations = 10;
-    private int minStation = 0, maxStation;
+    private int radioStationsCount = 0;
+    private int minStationIndex = 0, maxStationIndex = 0;
     private int minVolume = 0, maxVolume = 100;
 
     public Radio() {
-
+        this(10);
     }
 
-    public Radio(int numberOfRadioStations) {
-        this.numberOfRadioStations = numberOfRadioStations;
+    public Radio(int radioStationsCount) {
+        this.radioStationsCount = radioStationsCount;
+        maxStationIndex = radioStationsCount - 1;
     }
 
 
     public void next() {
-        if (currentStation < maxStation) {
+        if (currentStation < maxStationIndex) {
             currentStation++;
         } else {
-            currentStation = minStation;
+            currentStation = minStationIndex;
         }
     }
 
     public void prev() {
-        if (currentStation > minStation) {
+        if (currentStation > minStationIndex) {
             currentStation--;
         } else {
-            currentStation = maxStation;
+            currentStation = maxStationIndex;
         }
     }
 
-    public int getCurrentNumberOfStations() {
-        return numberOfRadioStations;
-    }
-
-    public int setMaxStation(int numberOfRadioStations) {
-        maxStation = numberOfRadioStations - 1;
-        return maxStation;
+    public int getRadioStationsCount() {
+        return radioStationsCount;
     }
 
     public int getCurrentStation() {
@@ -47,10 +43,10 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation < minStation) {
+        if (currentStation < minStationIndex) {
             return;
         }
-        if (currentStation > maxStation) {
+        if (currentStation >= radioStationsCount) {
             return;
         }
         this.currentStation = currentStation;
